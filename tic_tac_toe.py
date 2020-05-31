@@ -4,8 +4,10 @@ import random as r
 sn = t.Screen()
 sn.setup(600,600)
 sn.tracer(0)
+#numbers for the loop to map the turtle coordinates
 placea = [-100,0,100]
 placeb = [-100,0,100]
+#all the turtles
 row_list = []
 for i in placea:
     for j in placeb:
@@ -22,7 +24,7 @@ board = t.Turtle()
 board.penup()
 board.hideturtle()
 board.goto(-280,280)
-
+# turtle indexes that match with the rows collumns and diagonals
 top_row = [2,5,8]
 middle_row = [1,4,7]
 bottom_row = [0,3,6]
@@ -34,6 +36,7 @@ right_col = [6,7,8]
 diag_1 = [0,4,8]
 diag_2 = [2,4,6]
 def box_color(ind):
+    #algorithm for box colors
     global r_color
     if r_color == 'blue':
         r_color = 'purple'
@@ -45,7 +48,7 @@ def box_color(ind):
     elif row_list[ind].color() == ('black','blue'):
         row_list[ind].color() = ('black', 'blue')
     row_list[ind].color('black', r_color)
-    
+    #pulls numbers out of lists to keep track of played boxes
     row_index = row_list.index(row_list[ind])
     if row_index in top_row:
         top_row.remove(row_index)
@@ -73,7 +76,7 @@ def box_color(ind):
     elif row_index in diag_2:
         diag_2.remove(row_index)
         print(diag_2)
-    
+# identifies where each clicked box is so they do something.
 def change_color(x,y):
     board.clear()
     if x > -150 and x < -50:
